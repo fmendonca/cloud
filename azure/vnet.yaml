@@ -1,0 +1,16 @@
+---
+  - hosts: localhost
+    connection: local
+    collections:
+    - azure.azcollection
+
+    tasks:
+
+      - name: Create a virtual network
+        azure_rm_virtualnetwork:
+          resource_group: "{{ rg_name }}"
+          name: "{{ vnet_name }}"
+          address_prefixes:
+              - "{{ cidr_vnet }}"
+          state: "{{ vnet_state }}"
+        register: aro_vnet_response
