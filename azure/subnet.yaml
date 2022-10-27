@@ -1,0 +1,16 @@
+---
+  - hosts: localhost
+    connection: local
+    collections:
+    - azure.azcollection
+
+    tasks:
+
+      - name: Create subnets
+        azure_rm_subnet:
+          resource_group: "{{ rg_name }}"
+          virtual_network_name: "{{ vnet_name }}"
+          name: "{{ subnet_name }}"
+          address_prefix_cidr: "{{ cidr_subnet }}"
+          state: "{{ subnet_state }}"
+        register: aro_subnet_response
