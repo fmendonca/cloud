@@ -26,7 +26,7 @@
 
       - name: debug subnet
         debug:
-          msg: "{{ subnet_worker }}"
+          msg: "{{ subnet_worker.id }}"
       # - name: Create openshift cluster 
       #   azure_rm_openshiftmanagedcluster:
       #     resource_group: "{{ rsg_name }}"
