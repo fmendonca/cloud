@@ -30,9 +30,8 @@
             visibility: "{{ api_visibility }}"
           ingress_profiles:
             visibility: "{{ ingress_visibility }}"
-          cluster_profile:
+          cluster_profile:            
             resource_group_id: "{{ rsg_name }}"
-            domain: "{{ cluster_name }}"
           network_profile:
             pod_cidr: "{{ pod_cidr }}"
             service_cidr: "{{ service_cidr }}"
