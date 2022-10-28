@@ -7,7 +7,7 @@
 
       - name: Create subnets Master
         azure_rm_subnet:
-          resource_group: "{{ rg_name }}"
+          resource_group: "{{ rsg_name }}"
           virtual_network_name: "{{ vnet_name }}"
           name: "master-{{ cluster_name }}"
           address_prefix_cidr: "{{ master_cidr_subnet }}"
@@ -16,7 +16,7 @@
 
       - name: Create subnets Worker
         azure_rm_subnet:
-          resource_group: "{{ rg_name }}"
+          resource_group: "{{ rsg_name }}"
           virtual_network_name: "{{ vnet_name }}"
           name: "worker-{{ cluster_name }}"
           address_prefix_cidr: "{{ worker_cidr_subnet }}"
