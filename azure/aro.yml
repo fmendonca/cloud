@@ -33,7 +33,7 @@
             - name: "default"
               visibility: "{{ ingress_visibility }}"
           cluster_profile:            
-            resource_group_id: "{{ rsg_name }}"
+            pull_secret: '{{ pullsecret }}'
           network_profile:
             pod_cidr: "{{ pod_cidr }}"
             service_cidr: "{{ service_cidr }}"
