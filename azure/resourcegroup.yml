@@ -9,4 +9,4 @@
         azure_rm_resourcegroup:
           name: "{{ rsg_name }}"
           location: "{{ az_region }}"
-          state: "{{ rsg_state }}"
+          state: present
