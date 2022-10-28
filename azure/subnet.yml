@@ -12,5 +12,5 @@
           virtual_network_name: "{{ vnet_name }}"
           name: "{{ subnet_name }}"
           address_prefix_cidr: "{{ cidr_subnet }}"
-          state: "{{ subnet_state }}"
+          state: present
         register: aro_subnet_response
