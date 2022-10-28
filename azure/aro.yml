@@ -13,6 +13,7 @@
           address_prefix_cidr: "{{ master_cidr_subnet }}"
           private_link_service_network_policies: Disabled
           state: present
+        register: subnet_master  
 
       - name: Create subnets Worker
         azure_rm_subnet:
@@ -21,6 +22,7 @@
           name: "worker-{{ cluster_name }}"
           address_prefix_cidr: "{{ worker_cidr_subnet }}"
           state: present
+        register: subnet_worker 
 
       - name: Create openshift cluster 
         azure_rm_openshiftmanagedcluster:
@@ -40,9 +42,9 @@
             service_cidr: "{{ service_cidr }}"
           worker_profiles:
             - vm_size : "{{ instance_type_worker }}"
-              subnet_id : "worker-{{ cluster_name }}"
+              subnet_id : "{{ subnet_worker.id }}"
               disk_size : "{{ worker_disk_size }}"
               count : "{{ worker_count }}" 
           master_profile:
             vm_size : "{{ instance_type_master }}"
-            subnet_id: "master-{{ cluster_name }}"
+            subnet_id: "{{ subnet_master.id }}"
