@@ -36,7 +36,7 @@
             - name: "default"
               visibility: "{{ ingress_visibility }}"  
           cluster_profile:            
-            pull_secret: '{{ pullsecret }}'
+            pull_secret: "{{ pullsecret }}"
           network_profile:
             pod_cidr: "{{ pod_cidr }}"
             service_cidr: "{{ service_cidr }}"
