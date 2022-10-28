@@ -26,6 +26,7 @@
         azure_rm_openshiftmanagedcluster:
           resource_group: "{{ rsg_name }}"
           name: "{{ cluster_name }}"
+          location: "{{ az_region }}"
           api_server_profile:
             visibility: "{{ api_visibility }}"
           ingress_profiles:
