@@ -30,7 +30,8 @@
           api_server_profile:
             visibility: "{{ api_visibility }}"
           ingress_profiles:
-            visibility: "{{ ingress_visibility }}"
+            - name: "default"
+              visibility: "{{ ingress_visibility }}"
           cluster_profile:            
             resource_group_id: "{{ rsg_name }}"
           network_profile:
