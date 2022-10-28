@@ -29,9 +29,12 @@
           location: "{{ az_region }}"
           api_server_profile:
             visibility: "{{ api_visibility }}"
+          service_principal_profile:
+            client_id: "{{ _client_id }}"
+            client_secret: "{{ _client_secret }}"
           ingress_profiles:
             - name: "default"
-              visibility: "{{ ingress_visibility }}"
+              visibility: "{{ ingress_visibility }}"  
           cluster_profile:            
             pull_secret: '{{ pullsecret }}'
           network_profile:
