@@ -42,7 +42,7 @@
 
       - name: Create AD Application
         azure_rm_adserviceprincipal:
-          app_id: "{{ aro }}-random_ad_aplication"
+          app_id: "{{ app_id }}"
           tenant: "{{ facts_subscriptions_others | community.general.json_query('subscriptions[*].tenant_id')}}"
           state: present 
         register: service_principal_app_registration
