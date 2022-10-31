@@ -32,7 +32,7 @@
       - name: Create Service Principal
         azure_rm_adserviceprincipal:
           app_id: "{{ cluster_name }}"
-          tenant: "{{ facts_subscriptions_others.subscriptions.subscriptions.tenant_id }}"
+          tenant: "{{ facts_subscriptions_others.subscriptions.tenant_id }}"
           state: present 
         register: service_principal_app_registration
 
