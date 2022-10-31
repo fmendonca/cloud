@@ -31,7 +31,7 @@
 
       - name: Debug Subs
         debug:
-          msg: "{{ facts_subscriptions_others.subscriptions.subscriptions_id }}"
+          msg: "{{ facts_subscriptions_others | community.general.json_query('subscriptions[*].subscription_id')}}"
 
       - name: Debug tenant
         debug:
