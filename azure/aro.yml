@@ -24,27 +24,37 @@
           state: present
         register: subnet_worker 
       
-      - name: Create openshift cluster 
-        azure_rm_openshiftmanagedcluster:
-          resource_group: "{{ rsg_name }}"
-          name: "{{ cluster_name }}"
-          location: "{{ az_region }}"
-          api_server_profile:
-            visibility: "{{ api_visibility }}"
-          service_principal_profile:
-            client_id: "{{ _client_id }}"
-            client_secret: "{{ _client_secret }}"
-          ingress_profiles:
-            - name: "default"
-              visibility: "{{ ingress_visibility }}" 
-          network_profile:
-            pod_cidr: "{{ pod_cidr }}"
-            service_cidr: "{{ service_cidr }}"
-          worker_profiles:
-            - vm_size : "{{ instance_type_worker }}"
-              subnet_id : "{{ subnet_worker.state.id }}"
-              disk_size : "{{ worker_disk_size }}"
-              count : "{{ worker_count }}" 
-          master_profile:
-            vm_size : "{{ instance_type_master }}"
-            subnet_id: "{{ subnet_master.state.id }}"
+      - name: Create Service Principal
+        azure_rm_adserviceprincipal:
+          app_id: "{{ app_id }}"
+          state: present
+        register: service_principal_app_registration
+
+      - name: Debug SP
+        debug:
+          msg: "{{ service_principal_app_registration }}"
+
+      # - name: Create openshift cluster 
+      #   azure_rm_openshiftmanagedcluster:
+      #     resource_group: "{{ rsg_name }}"
+      #     name: "{{ cluster_name }}"
+      #     location: "{{ az_region }}"
+      #     api_server_profile:
+      #       visibility: "{{ api_visibility }}"
+      #     service_principal_profile:
+      #       client_id: "{{ _client_id }}"
+      #       client_secret: "{{ _client_secret }}"
+      #     ingress_profiles:
+      #       - name: "default"
+      #         visibility: "{{ ingress_visibility }}" 
+      #     network_profile:
+      #       pod_cidr: "{{ pod_cidr }}"
+      #       service_cidr: "{{ service_cidr }}"
+      #     worker_profiles:
+      #       - vm_size : "{{ instance_type_worker }}"
+      #         subnet_id : "{{ subnet_worker.state.id }}"
+      #         disk_size : "{{ worker_disk_size }}"
+      #         count : "{{ worker_count }}" 
+      #     master_profile:
+      #       vm_size : "{{ instance_type_master }}"
+      #       subnet_id: "{{ subnet_master.state.id }}"
