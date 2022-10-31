@@ -35,7 +35,7 @@
 
       - name: Debug tenant
         debug:
-          msg: "{{ tenantid | json_query(\"facts_subscriptions_others.subscriptions[?output_key == ‘tenant_id’ || output_key ==’tenant_id’].output_value[]\") }}"
+          msg: {{ facts_subscriptions_others | community.general.json_query('msg.subscriptions[*].tenant_id')}}
 
 
       - name: Create Service Principal
