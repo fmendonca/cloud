@@ -24,15 +24,24 @@
           state: present
         register: subnet_worker 
       
-      - name: Create Service Principal
-        azure_rm_adserviceprincipal:
-          app_id: "{{ cluster_name }}"
-          state: present
-        register: service_principal_app_registration
+      - name: Get facts for all subscriptions, including ones that are disabled.
+        azure_rm_subscription_info:
+          all: True
+        register: facts_subscriptions_others
 
-      - name: Debug SP
+      - name: Debug facts for all subscriptions
         debug:
-          msg: "{{ service_principal_app_registration }}"
+          msg: "{{ facts_subscriptions_others }}"
+
+      # - name: Create Service Principal
+      #   azure_rm_adserviceprincipal:
+      #     app_id: "{{ cluster_name }}"
+      #     state: present
+      #   register: service_principal_app_registration
+
+      # - name: Debug SP
+      #   debug:
+      #     msg: "{{ service_principal_app_registration }}"
 
       # - name: Create openshift cluster 
       #   azure_rm_openshiftmanagedcluster:
