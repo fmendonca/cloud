@@ -38,9 +38,9 @@
           msg: "{{ facts_subscriptions_others | community.general.json_query('subscriptions[*].tenant_id')}}"
 
 
-      - name: Create Service Principal
-        azure_rm_adserviceprincipal:
-          app_display_name: "{{ cluster_name }}"
+      - name: Create AD Application
+        azure_rm_adapplication:
+          display_name: "{{ cluster_name }}"
           tenant: "{{ facts_subscriptions_others | community.general.json_query('subscriptions[*].tenant_id')}}"
           state: present 
         register: service_principal_app_registration
