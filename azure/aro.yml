@@ -29,6 +29,10 @@
           all: True
         register: facts_subscriptions_others
 
+      - name: Debug Subs
+        debug:
+          msg: "{{ facts_subscriptions_others }}"
+
       - name: Create Service Principal
         azure_rm_adserviceprincipal:
           app_id: "{{ cluster_name }}"
