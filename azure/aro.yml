@@ -33,6 +33,11 @@
         debug:
           msg: "{{ facts_subscriptions_others }}"
 
+      - name: Debug tenant
+        debug:
+          msg: "{{ facts_subscriptions_others.subscriptions.tenant_id }}"
+
+
       - name: Create Service Principal
         azure_rm_adserviceprincipal:
           app_id: "{{ cluster_name }}"
