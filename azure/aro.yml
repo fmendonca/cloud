@@ -35,7 +35,7 @@
 
       - name: Debug tenant
         debug:
-          msg: "{{ facts_subscriptions_others.subscriptions.tenant_id }}"
+          msg: "{{ facts_subscriptions_others.tenant_id }}"
 
 
       - name: Create Service Principal
