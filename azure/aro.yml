@@ -31,8 +31,8 @@
 
       - name: Debug Subs
         debug:
-          msg: "{{ facts_subscriptions_others.stdout.subscriptions.subscription_id }}"
-#          msg: "{{ facts_subscriptions_others | json_query('subscriptions[*].subscription_id')}}"
+#          msg: "{{ facts_subscriptions_others.stdout.subscriptions.subscription_id }}"
+          msg: "{{ facts_subscriptions_others | json_query('subscriptions[*].subscription_id')|last}}"
 
       # - name: Debug tenant
       #   debug:
