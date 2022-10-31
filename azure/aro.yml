@@ -31,7 +31,7 @@
 
       - name: Debug Subs
         debug:
-          msg: "{{ facts_subscriptions_others }}"
+          msg: "{{ facts_subscriptions_others.subscriptions.subscriptions_id }}"
 
       - name: Debug tenant
         debug:
